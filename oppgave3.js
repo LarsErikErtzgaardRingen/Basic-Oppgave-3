@@ -90,7 +90,43 @@ let combinedAge = 0;
 
 // Skriv koden for oppgave 1 her
 
+// Teller hvor mange personer som faktisk blir med i beregningen (alle utenom Otto)
+
+let peopleCounted = 0;
+
+for (let i = 0; i < people.length; i++) {
+	const person = people[i];
+
+	// Hopp over Otto
+	if (person.name === "Otto") {
+		continue;
+	}
+
+    // Tilfeldig by fra cities-arrayet
+	const randomIndex = Math.floor(Math.random() * cities.length);
+	person.city = cities[randomIndex];
+
+	// Tittel basert på kjønn
+	person.title = person.male ? "Mr." : "Ms.";
+
+	// Øk alderen med 2
+	person.age += 2;
+
+	// Legg til "coding" først i hobby-arrayet
+	person.hobbies.unshift("coding");
+
+	// Legg til den NYE alderen i den kombinerte alderen
+	combinedAge += person.age;
+	peopleCounted++;
+}
+
+console.log(people);
+console.log("Kombinert alder:", combinedAge);
+
 let averageAge = 0;
+
+averageAge = combinedAge / peopleCounted;
+console.log("Gjennomsnittsalder:", averageAge);
 
 /******************************************************************************
 2.
