@@ -194,6 +194,18 @@ skal returnere:
 
 // Skriv koden for oppgave 3 her
 
+function cleanText(words) {
+	const cleanedWords = [];
+
+	for (const word of words) {
+		cleanedWords.push(word.trim().toLowerCase());
+	}
+
+	return cleanedWords.join(" ");
+}
+
+console.log(cleanText([" thIS", "teXt  ", " nEeds ", "to", "BE", "cleANED   ", " Up"]));
+
 /******************************************************************************
 4.
 
