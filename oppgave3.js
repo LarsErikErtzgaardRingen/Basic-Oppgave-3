@@ -284,12 +284,46 @@ Jeg har lagt til noen testvariabler for å sjekke funksjonen din.
 ******************************************************************************/
 
 const greetings = [
-  "Hello, how are you today?",
-  "Diciamo ciao prima di andare!",
-  "Salut, ça va bien?",
-  "Kannst du mich hören? Hallo!",
-  "Hva er regex?",
-  "Nos saludamos con un alegre hola.",
-  "Ona pomachała i powiedziała cześć z uśmiechem.",
-  "Good afternoon gentlemen!"
+  "Hello, how are you today?",
+  "Diciamo ciao prima di andare!",
+  "Salut, ça va bien?",
+  "Kannst du mich hören? Hallo!",
+  "Hva er regex?",
+  "Nos saludamos con un alegre hola.",
+  "Ona pomachała i powiedziała cześć z uśmiechem.",
+  "Good afternoon gentlemen!"
 ];
+
+// Skriv koden for oppgave 5 her
+
+function helloChecker(text) {
+	const helloWords = {
+		hello: "engelsk",
+		ciao: "italiensk",
+		salut: "fransk",
+		hallo: "tysk",
+		hola: "spansk",
+		czesc: "polsk"
+	};
+
+	// Små bokstaver + fjern aksenttegn (så "cześć" blir "czesc")
+	const normalized = text
+		.toLowerCase()
+		.normalize("NFD")
+		.replace(/[\u0300-\u036f]/g, "");
+
+	// Del opp i ord og fjern tegnsetting som komma og utropstegn
+	const words = normalized.split(/[^a-z]+/);
+
+	for (const word of words) {
+		if (helloWords[word]) {
+			return `HELLO oppdaget på ${helloWords[word]}.`;
+		}
+	}
+
+	return "Ingen HELLO oppdaget.";
+}
+
+for (const greeting of greetings) {
+	console.log(helloChecker(greeting));
+}
