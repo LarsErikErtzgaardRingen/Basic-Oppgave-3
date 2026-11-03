@@ -150,6 +150,23 @@ diceRoller(5, 20) skal returnere et array med 5 tilfeldige tall fra 1-20.
 
 // Skriv koden for oppgave 2 her
 
+// sides har standardverdi 6, så diceRoller(4) fungerer fortsatt som en vanlig terning
+function diceRoller(numberOfDice, sides = 6) {
+	const rolls = [];
+
+	for (let i = 0; i < numberOfDice; i++) {
+		// Math.random() gir 0 til (men ikke med) 1, så +1 gir tall fra 1 til sides
+		const roll = Math.floor(Math.random() * sides) + 1;
+		rolls.push(roll);
+	}
+
+	return rolls;
+}
+
+console.log(diceRoller(4));
+console.log(diceRoller(6));
+console.log(diceRoller(5, 20));
+
 /******************************************************************************
 3.
 
